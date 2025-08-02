@@ -2,17 +2,18 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Globe, 
-  Users, 
-  Award, 
-  ArrowRight, 
-  Phone, 
+import {
+  Globe,
+  Users,
+  Award,
+  ArrowRight,
+  Phone,
   MapPin,
   CheckCircle,
-  Star
+  Star,
+  Plane,
 } from 'lucide-react';
-
+import { openForm } from '@/lib/Form';
 
 const Hero = ({ className = '' }) => {
   const trustIndicators = [
@@ -50,9 +51,9 @@ const Hero = ({ className = '' }) => {
   };
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30 
+    hidden: {
+      opacity: 0,
+      y: 30
     },
     visible: {
       opacity: 1,
@@ -81,7 +82,7 @@ const Hero = ({ className = '' }) => {
     <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${className}`}>
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('https://images.pexels.com/photos/1008155/pexels-photo-1008155.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop')`
@@ -92,7 +93,7 @@ const Hero = ({ className = '' }) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative flex flex-col lg:flex-row items-center z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -104,9 +105,8 @@ const Hero = ({ className = '' }) => {
             variants={itemVariants}
             className="mb-6"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
-              <span className="block">Pen</span>
-              <span className="pen-visa-yellow">Visa</span>
+            <h1 className="text-4xl pen-visa-yellow sm:text-5xl lg:text-6xl xl:text-7xl text-transparent bg-gradient-to-br from-pen-visa-yellow to-pen-visa-green bg-clip-text font-bold leading-tight">
+              PenVisa
             </h1>
           </motion.div>
 
@@ -117,16 +117,16 @@ const Hero = ({ className = '' }) => {
           >
             Your Gateway to Global Opportunities
             <span className="block mt-2 text-lg sm:text-xl lg:text-2xl xl:text-3xl text-gray-200">
-              Expert Visa Consulting Across 7 Regions Worldwide
+              Expert Visa Consulting Across <span className="text-[#ffd100] font-bold"> 7 Regions</span> Worldwide
             </span>
           </motion.h2>
 
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-gray-200 mb-8 lg:mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+            className="text-lg sm:text-xl text-[#f9fbe7] mb-8 lg:mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
           >
-            Navigate complex visa processes with confidence. Our experienced consultants 
+            Navigate complex visa processes with confidence. Our experienced consultants
             provide personalized guidance to make your international dreams a reality.
           </motion.p>
 
@@ -166,6 +166,7 @@ const Hero = ({ className = '' }) => {
               whileHover="hover"
               whileTap="tap"
               className="group bg-pen-visa-yellow text-black px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center gap-2"
+              onClick={() => openForm()}
             >
               <Phone className="w-5 h-5" />
               Book Free Consultation
@@ -203,10 +204,71 @@ const Hero = ({ className = '' }) => {
             </div>
           </motion.div>
         </motion.div>
+
+        {/* //% Right Section */}
+        <motion.div
+        >
+          <div className="relative flex items-center justify-center">
+            <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+              {/* Central Circle */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-48 h-48 lg:w-56 lg:h-56 bg-gradient-to-br from-[#f9fbe7]/80 via-[#ffd100]/80 to-[#ffd100]/80 backdrop-blur-sm rounded-full border border-slate-700/50 flex flex-col items-center justify-center shadow-2xl">
+                  <div className="w-16 h-16 bg-[#386641]/80 rounded-full flex items-center justify-center mb-4">
+                    <Globe className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#386641] text-center">Pen Visa</h3>
+                  <p className="text-sm text-[#386641] text-center mt-1">Consultants</p>
+                </div>
+              </div>
+
+              {/* Orbiting Border with Airplanes */}
+              <div className="absolute inset-0 animate-spin-slow">
+                <div className="relative w-full h-full">
+                  {/* Airplane icons positioned around the circle */}
+                  {Array.from({ length: 8 }).map((_, index) => {
+                    const angle = index * 45 * (Math.PI / 180)
+                    const radius = 160 // Distance from center
+                    const x = Math.cos(angle) * radius
+                    const y = Math.sin(angle) * radius
+
+                    return (
+                      <div
+                        key={index}
+                        className="absolute w-8 h-8 bg-[#ffd100]/50 rounded-full flex items-center justify-center border border-[#386641] "
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          transform: `translate(${x - 16}px, ${y - 16}px)`,
+                        }}
+                      >
+                        <Plane className="h-4 w-4 text-[#386641] animate-pulse-custom" />
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Outer Ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-slate-600/30 animate-pulse-custom"></div>
+
+              {/* Inner Ring */}
+              <div className="absolute inset-8 rounded-full border border-slate-700/40"></div>
+
+              {/* Decorative dots */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-secondary rounded-full animate-ping-custom"></div>
+              <div className="absolute bottom-8 left-8 w-1.5 h-1.5 bg-slate-400 rounded-full animate-ping-custom delay-1000"></div>
+              <div className="absolute top-12 left-12 w-1 h-1 bg-red-400 rounded-full animate-ping-custom delay-500"></div>
+            </div>
+
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary/10 to-slate-blue/10 rounded-full blur-3xl scale-150 -z-10"></div>
+          </div>
+
+        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -223,7 +285,7 @@ const Hero = ({ className = '' }) => {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };
