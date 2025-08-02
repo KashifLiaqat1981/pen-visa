@@ -1,0 +1,153 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  /* Brand Color RGB variables for opacity support */
+  --color-primary-rgb: 56, 102, 65;
+  --color-secondary-rgb: 255, 209, 0;
+  --color-tertiary-rgb: 249, 251, 231;
+
+  /* Hex fallbacks */
+  --color-primary: #386641;
+  --color-secondary: #ffd100;
+  --color-tertiary: #f9fbe7;
+  --color-primary-foreground: #f9fbe7;
+  --color-secondary-foreground: #386641;
+  --color-tertiary-foreground: #386641;
+}
+
+@layer base {
+
+  /* Ensure text and background variables use RGB with CSS opacity tokens */
+  .bg-primary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(var(--color-primary-rgb) / var(--tw-bg-opacity));
+  }
+
+  .bg-secondary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(var(--color-secondary-rgb) / var(--tw-bg-opacity));
+  }
+
+  .bg-tertiary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(var(--color-tertiary-rgb) / var(--tw-bg-opacity));
+  }
+
+  .text-primary {
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-primary-rgb) / var(--tw-text-opacity));
+  }
+
+  .text-secondary {
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-secondary-rgb) / var(--tw-text-opacity));
+  }
+
+  .text-tertiary {
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-tertiary-rgb) / var(--tw-text-opacity));
+  }
+
+  .text-on-primary {
+    color: var(--color-primary-foreground);
+  }
+
+  .text-on-secondary {
+    color: var(--color-secondary-foreground);
+  }
+
+  .text-on-tertiary {
+    color: var(--color-tertiary-foreground);
+  }
+}
+
+@layer utilities {
+
+  /* Old hex-based utilities remain if needed */
+  .bg-primary-hex {
+    background-color: var(--color-primary);
+  }
+
+  .bg-secondary-hex {
+    background-color: var(--color-secondary);
+  }
+
+  .bg-tertiary-hex {
+    background-color: var(--color-tertiary);
+  }
+
+  /* Brand utilities */
+  .pen-visa-yellow {
+    color: var(--color-secondary);
+  }
+
+  .pen-visa-green {
+    color: var(--color-primary);
+  }
+
+  .pen-visa-cream {
+    color: var(--color-tertiary);
+  }
+
+  .bg-pen-visa-yellow {
+    background-color: var(--color-secondary);
+  }
+
+  .bg-pen-visa-green {
+    background-color: var(--color-primary);
+  }
+
+  .bg-pen-visa-cream {
+    background-color: var(--color-tertiary);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-custom {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes ping-custom {
+
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-pulse-custom {
+  animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-ping-custom {
+  animation: ping-custom 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

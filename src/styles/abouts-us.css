@@ -1,0 +1,380 @@
+
+/* Color Variables */
+:root {
+    --dark-green: #386641;
+    --yellow: #ffd100;
+    --cream: #f9fbe7;
+  }
+  
+  /* Utility Classes */
+  .bg-cream {
+    background-color: var(--cream);
+  }
+  
+  .text-dark-green {
+    color: var(--dark-green);
+  }
+  
+  .text-yellow {
+    color: var(--yellow);
+  }
+  
+  .bg-yellow {
+    background-color: var(--yellow);
+  }
+  
+  .border-dark-green\/10 {
+    border-color: rgba(56, 102, 65, 0.1);
+  }
+  
+  .border-yellow\/20 {
+    border-color: rgba(255, 209, 0, 0.2);
+  }
+  
+  .border-yellow\/30 {
+    border-color: rgba(255, 209, 0, 0.3);
+  }
+  
+  .text-dark-green\/70 {
+    color: rgba(56, 102, 65, 0.7);
+  }
+  
+  .text-dark-green\/80 {
+    color: rgba(56, 102, 65, 0.8);
+  }
+  
+  .bg-yellow\/10 {
+    background-color: rgba(255, 209, 0, 0.1);
+  }
+  
+  .bg-yellow\/20 {
+    background-color: rgba(255, 209, 0, 0.2);
+  }
+  
+  .bg-dark-green\/10 {
+    background-color: rgba(56, 102, 65, 0.1);
+  }
+  
+  .bg-white\/60 {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .bg-white\/80 {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Background Pattern */
+  .bg-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(56, 102, 65, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 209, 0, 0.1) 0%, transparent 50%);
+    background-size: 100px 100px;
+  }
+  
+  /* Floating Elements */
+  .floating-elements {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 209, 0, 0.1), rgba(56, 102, 65, 0.1));
+    border: 1px solid rgba(255, 209, 0, 0.2);
+  }
+  
+  .circle-1 {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    right: 10%;
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  .circle-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 5%;
+    animation: float 15s ease-in-out infinite reverse;
+    animation-delay: -5s;
+  }
+  
+  .circle-3 {
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    right: 20%;
+    animation: float 18s ease-in-out infinite;
+    animation-delay: -8s;
+  }
+  
+  /* Keyframe Animations */
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+    }
+    50% { 
+      transform: translateY(-30px) rotate(5deg); 
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes expandWidth {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 6rem;
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  /* Animation Classes */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .animate-title {
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+  
+  .title-underline {
+    animation: expandWidth 1.5s ease-out 0.8s both;
+  }
+  
+  .animate-fade-in {
+    animation: fadeInUp 1s ease-out 0.4s both;
+  }
+  
+  .animate-fade-in-delayed {
+    animation: fadeInUp 1s ease-out 0.6s both;
+  }
+  
+  /* Card Styles */
+  .stat-card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: scaleIn 0.6s ease-out both;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(56, 102, 65, 0.15);
+    border-color: rgba(255, 209, 0, 0.3);
+  }
+  
+  .stat-icon {
+    transition: all 0.3s ease;
+  }
+  
+  .stat-card:hover .stat-icon {
+    animation: bounce 0.6s ease;
+  }
+  
+  .value-card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: slideInLeft 0.6s ease-out both;
+  }
+  
+  .value-card:nth-child(even) {
+    animation: slideInRight 0.6s ease-out both;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(56, 102, 65, 0.12);
+    border-color: rgba(255, 209, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .value-icon {
+    transition: all 0.3s ease;
+  }
+  
+  .value-card:hover .value-icon {
+    transform: scale(1.1) rotate(5deg);
+    background-color: rgba(255, 209, 0, 0.3);
+  }
+  
+  .mission-section {
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.8s ease-out both;
+  }
+  
+  .mission-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(56, 102, 65, 0.1);
+  }
+  
+  .mission-icon {
+    transition: all 0.3s ease;
+  }
+  
+  .mission-section:hover .mission-icon {
+    animation: pulse 1s ease-in-out infinite;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+  }
+  
+  /* Counter Animation */
+  .counter {
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  /* Focus States for Accessibility */
+  .stat-card:focus,
+  .value-card:focus,
+  .mission-section:focus {
+    outline: 2px solid var(--yellow);
+    outline-offset: 2px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .floating-circle {
+      display: none;
+    }
+    
+    .stat-card:hover,
+    .value-card:hover {
+      transform: translateY(-5px) scale(1.01);
+    }
+    
+    .circle-1,
+    .circle-2,
+    .circle-3 {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    .floating-circle,
+    .animate-title,
+    .title-underline,
+    .animate-fade-in,
+    .animate-fade-in-delayed,
+    .stat-card,
+    .value-card,
+    .mission-section {
+      animation: none;
+    }
+    
+    .animate-on-scroll {
+      opacity: 1;
+      transform: none;
+    }
+    
+    .stat-card:hover,
+    .value-card:hover,
+    .mission-section:hover {
+      transform: none;
+    }
+  }
+  
+  /* Performance Optimizations */
+  .stat-card,
+  .value-card,
+  .mission-section,
+  .floating-circle,
+  .stat-icon,
+  .value-icon,
+  .mission-icon {
+    will-change: transform;
+  }
+  
+  /* High Contrast Mode Support */
+  @media (prefers-contrast: high) {
+    .stat-card,
+    .value-card,
+    .mission-section {
+      border-width: 2px;
+    }
+    
+    .bg-white\/60,
+    .bg-white\/80 {
+      background-color: white;
+    }
+  }
